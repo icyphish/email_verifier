@@ -38,7 +38,7 @@ button.place(relwidth=0.3,relheight=1)
 entry = tk.Entry(top_frame, bg='pink',font=('Courier',10))
 entry.place(relx=0.35, relheight=1, relwidth=0.65)
 
-label = tk.Label(lower_frame, bg='yellow',font=('Courier',14), anchor='nw', justify='left', bd=3)
+label = tk.Label(lower_frame, bg='yellow',font=('Courier',11), anchor='nw', justify='left', bd=3)
 label.place(relwidth=1,relheight=1)
 
 #API Call - Validate Email
@@ -63,10 +63,18 @@ def response_template(verify_email):
         format_check = (verify_email['format_valid'])
         mx_check = (verify_email['mx_found'])
         smtp_check = (verify_email['smtp_check'])
+        catchall_check = (verify_email['catch_all'])
+        freemail_check= (verify_email['free'])
         score_check = (verify_email['score']*100)
 
-        output= f"Email: \t\t\t{address_check}\nValid Format: \t\t{format_check}\nMX Found: \t\t{mx_check}" \
-                f"\nSMTP Found: \t\t{smtp_check} \nReliability(0-100%): \t{score_check}%"
+        output= f"Verification...Successful!\n\n" \
+                f"Email: \t\t\t{address_check}\n" \
+                f"Valid Format: \t\t{format_check}\n" \
+                f"MX Found: \t\t{mx_check}" \
+                f"\nSMTP Found: \t\t{smtp_check}\n" \
+                f"Catch All:\t\t{catchall_check} \n" \
+                f"Free Email: \t\t{freemail_check}\n" \
+                f"Reliability(0-100%): \t{score_check}%"
     except:
         output= f"""There was an error retrieving data from the server."""
     return output
