@@ -9,7 +9,7 @@ from urllib.request import urlopen
 root = tk.Tk()
 root.title(" - Email Verifier - ")
 windows_height = 400
-windows_width = 700
+windows_width = 600
 canvas = tk.Canvas(root, height=windows_height, width=windows_width)
 canvas.pack()
 
@@ -25,19 +25,20 @@ bg_label.place(relwidth =1, relheight=1)
 
 #FRAME
 top_frame= tk.Frame(root, bg='blue', bd=5)
-top_frame.place(relx=0.5, rely=0.1, relwidth=0.85, relheight=0.1, anchor='n')
+top_frame.place(relx=0.5, rely=0.15, relwidth=0.85, relheight=0.1, anchor='n')
 
 lower_frame = tk.Frame(root, bg='green',bd=10)
-lower_frame.place(relx=0.5, rely=0.25, relwidth=0.85, relheight=0.65, anchor='n')
+lower_frame.place(relx=0.5, rely=0.3, relwidth=0.85, relheight=0.6, anchor='n')
 
 #BUTTON
-entry = tk.Entry(top_frame, bg='pink',font=('Courier',10))
-entry.place(relx=0.4, relheight=1, relwidth=0.6)
 
-button = tk.Button(top_frame, text='Verify Email:', background='yellow', fg='red', font=('Courier',9), command=lambda: validate_email(entry.get()))
+button = tk.Button(top_frame, text='Verify Email:', bg='yellow', fg='red', font=('Courier',10), command=lambda: validate_email(entry.get()))
 button.place(relwidth=0.3,relheight=1)
 
-label = tk.Label(lower_frame, bg='yellow',font=('Courier',13), anchor='nw', justify='left', bd=4)
+entry = tk.Entry(top_frame, bg='pink',font=('Courier',10))
+entry.place(relx=0.35, relheight=1, relwidth=0.65)
+
+label = tk.Label(lower_frame, bg='yellow',font=('Courier',14), anchor='nw', justify='left', bd=3)
 label.place(relwidth=1,relheight=1)
 
 #API Call - Validate Email
@@ -52,7 +53,7 @@ def validate_email(email_address):
 
     label['text'] = response_template(verify_email)
 
-#Sample Payload
+#Sample Response
 # {'email': 'icywindy@gmail.com', 'did_you_mean': '', 'user': 'icywindy', 'domain': 'gmail.com', 'format_valid': True,
 #  'mx_found': True, 'smtp_check': True, 'catch_all': None, 'role': False, 'disposable': False, 'free': True, 'score': 0.8}
 
