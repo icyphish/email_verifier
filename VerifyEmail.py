@@ -1,5 +1,5 @@
 # Email Verifier - Checks if an email address is valid
-# Mailbox Layer API key: 09e8c6f316dd2516908caaeee914ffd0
+# Mailbox Layer API key: REGISTER YOUR OWN AND PUT IT INTO api_key
 import tkinter as tk
 import requests
 from PIL import ImageTk
@@ -43,7 +43,7 @@ label.place(relwidth=1,relheight=1)
 
 #API Call - Validate Email
 def validate_email(email_address):
-    api_key= '09e8c6f316dd2516908caaeee914ffd0'
+    api_key= 'REGISTER YOUR OWN API KEY'
     url = 'https://apilayer.net/api/check'
     parameter = {'access_key': api_key, 'email': email_address}
     response = requests.get(url, params=parameter)
@@ -52,10 +52,6 @@ def validate_email(email_address):
     print(verify_email)
 
     label['text'] = response_template(verify_email)
-
-#Sample Response
-# {'email': 'icywindy@gmail.com', 'did_you_mean': '', 'user': 'icywindy', 'domain': 'gmail.com', 'format_valid': True,
-#  'mx_found': True, 'smtp_check': True, 'catch_all': None, 'role': False, 'disposable': False, 'free': True, 'score': 0.8}
 
 def response_template(verify_email):
     try:
